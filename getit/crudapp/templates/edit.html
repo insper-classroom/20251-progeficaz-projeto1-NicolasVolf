@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<meta charset="UTF-8">
+<title>Get-it</title>
+</head>
+<body>
+
+
+<div class="area_forms">
+    <h2>Editar Nota</h2>
+    <form action="{{ url_for('update_note', id=note['ID']) }}" method="POST">
+      <input type="hidden" name="id" value="{{ note.ID }}">
+        <label for="titulo">Título</label>
+        <input id="titulo" type="text" name="titulo" placeholder="Edite o título..." required />
+
+        <label for="detalhes">Detalhes</label>
+        <textarea id="detalhes" name="detalhes" placeholder="Edite os detalhes..." required></textarea>
+
+        <button type="submit">Editar Nota</button>
+    </form>
+</div>
+
+</body>
+</html>

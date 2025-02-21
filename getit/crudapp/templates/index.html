@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="static/css/style.css">
+<meta charset="UTF-8">
+<title>Get-it</title>
+</head>
+<body>
+
+
+
+  <div class="area_forms">
+    <h2>Adicionar Nota</h2>
+    <form action="/submit" method="POST">
+        <label for="titulo">Título</label>
+        <input id="titulo" type="text" name="titulo" placeholder="Digite o título..." required />
+
+        <label for="detalhes">Detalhes</label>
+        <textarea id="detalhes" name="detalhes" placeholder="Digite os detalhes..." required></textarea>
+
+        <button type="submit">Adicionar Nota</button>
+    </form>
+</div>
+
+
+<div class="area_notes">
+  {% for note in datas %}
+  <div class="note">
+      <h3>{{ note.title }}</h3>
+      <p>{{ note.descricao }}</p>
+      <form action="{{ url_for('delete_note', id=note.id) }}" method="post">
+          <button type="submit">Deletar</button>
+      </form>
+      <form action="{{ url_for('edit_note', id=note.id) }}" method="post">
+          <button type="submit">Editar</button>
+      </form>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+</body>
+</html>
